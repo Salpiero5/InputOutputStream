@@ -1,0 +1,70 @@
+salman chetoripublic class Main {
+
+    public static void main(String[] args) {
+
+        fileOutput();
+        fileInput();
+
+        fileBufferOutput();
+        fileBufferInput();
+
+    }
+
+    private static void fileOutput() {
+        try {
+            FileOutputStream fo = new FileOutputStream("F:\\New.txt");
+            String s = "salman chetori";
+            byte[] b = s.getBytes();
+            fo.write(b);
+            fo.close();
+            System.out.println("success");
+        } catch (IOException e) {
+            System.out.println("Error");
+        }
+    }
+
+    private static void fileInput() {
+
+        int i = 0;
+        try {
+            FileInputStream fi = new FileInputStream("F:\\New.txt");
+            while ((i = fi.read()) != -1) {
+                System.out.print((char) i);
+            }
+            System.out.println();
+            fi.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private static void fileBufferOutput() {
+        try {
+            FileOutputStream fout = new FileOutputStream("F:\\New Buffer.txt");
+            BufferedOutputStream bout = new BufferedOutputStream(fout);
+            String s = "Welcome to javaTpoint.";
+            byte b[] = s.getBytes();
+            bout.write(b);
+            bout.flush(); // خالی کردن بافر برای اعمال داده جدید ؟
+            bout.close();
+            fout.close();
+            System.out.println("success");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void fileBufferInput() {
+        try {
+            FileInputStream fin = new FileInputStream("F:\\New Buffer.txt");
+            BufferedInputStream bin = new BufferedInputStream(fin);
+            int i;
+            while ((i = bin.read()) != -1) {
+                System.out.print((char) i);
+            }
+            bin.close();
+            fin.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }//salmaaaaaaaaaaaaaaaaanWelcome to javaTpoint.
